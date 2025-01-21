@@ -15,6 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.beginnerapp.navigation.NavGraph
+import com.example.beginnerapp.screens.Greeting
 import com.example.beginnerapp.ui.theme.BeginnerAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,43 +27,24 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BeginnerAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold(modifier = Modifier.fillMaxSize()) {
+
+                    val navController = rememberNavController()
+                    val navGraph=NavGraph(navController)
+
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Column(Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Hello World",
-            modifier = modifier
-        )
-        Button(onClick = {
-            println("Button Clicked")
-        }){
-            Text(
-                text = "Click"
-            )
-        }
-    }
 
-}
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     BeginnerAppTheme {
-        Greeting("Android")
+        val navController = rememberNavController()
+        Greeting(navController)
     }
 }
