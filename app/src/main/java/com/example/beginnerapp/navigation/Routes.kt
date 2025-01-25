@@ -8,4 +8,6 @@ sealed class Routes(val routes:String){
     object Greeting : Routes("greeting")
     @Serializable
     object Login : Routes("login")
+    @Serializable
+    object Products : Routes("products")
 }

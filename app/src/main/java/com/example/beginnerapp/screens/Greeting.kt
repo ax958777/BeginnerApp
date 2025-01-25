@@ -33,6 +33,13 @@ import kotlinx.serialization.Serializable
                     text = "Login"
                 )
             }
+            Button(onClick = {
+                navController.navigate(Routes.Products.routes)
+            }){
+                Text(
+                    text = "Products"
+                )
+            }
         }
 
     }

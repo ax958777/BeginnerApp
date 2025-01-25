@@ -19,7 +19,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.beginnerapp.navigation.NavGraph
 import com.example.beginnerapp.screens.Greeting
 import com.example.beginnerapp.ui.theme.BeginnerAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         println("Application Started...")
