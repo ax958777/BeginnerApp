@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.beginnerapp.component.ProductCard
 import com.example.beginnerapp.viewmodels.ProductsViewModel
 import com.example.beginnerapp.viewmodels.UiState
 
@@ -48,7 +49,10 @@ fun ProductsScreen(navController:NavHostController, vm:ProductsViewModel=hiltVie
                 LazyColumn {
                     items(products?: emptyList()){
                         product->
-                        Text(text=product.name)
+                        ProductCard(
+                            product = product,
+                            onAddToCart = vm::onAddToCart
+                        )
                     }
                 }
             }

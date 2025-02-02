@@ -2,7 +2,9 @@ package com.example.beginnerapp.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.beginnerapp.model.Product
 import com.example.beginnerapp.network.dto.ProductResponse
+import com.example.beginnerapp.network.dto.toProductModel
 import com.example.beginnerapp.network.service.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,8 +19,8 @@ class ProductsViewModel@Inject constructor(
 ):ViewModel() {
     private val _uiState= MutableStateFlow<UiState>(UiState.Initial)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
-    private val _products= MutableStateFlow<List<ProductResponse>>(emptyList())
-    val products: StateFlow<List<ProductResponse>> = _products.asStateFlow()
+    private val _products= MutableStateFlow<List<Product>>(emptyList())
+    val products: StateFlow<List<Product>> = _products.asStateFlow()
 
     init{
         fetchProducts()
@@ -31,13 +33,19 @@ class ProductsViewModel@Inject constructor(
                 val response=http.fetchProducts()
                 println("DEBUG-THE ProductsAPIResponse:${response}")
                 _uiState.value=UiState.Success
-                _products.value=response
+                _products.value=response.map{
+                    p->p.toProductModel()
+                }
 
             } catch(e:Exception){
                 _uiState.value=UiState.Error(e.message?:"An unknown error occurred")
 
             }
         }
+    }
+
+    fun onAddToCart(product:Product){
+
     }
 }
 sealed class UiState{
