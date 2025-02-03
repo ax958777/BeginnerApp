@@ -6,6 +6,7 @@ import com.example.beginnerapp.model.Product
 import com.example.beginnerapp.network.dto.ProductResponse
 import com.example.beginnerapp.network.dto.toProductModel
 import com.example.beginnerapp.network.service.ApiService
+import com.example.beginnerapp.repository.CartRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,8 +15,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductsViewModel@Inject constructor(
+class ProductsViewModel @Inject constructor(
     private val http:ApiService,
+    private val cartRepository:CartRepository
 ):ViewModel() {
     private val _uiState= MutableStateFlow<UiState>(UiState.Initial)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
@@ -44,8 +46,14 @@ class ProductsViewModel@Inject constructor(
         }
     }
 
-    fun onAddToCart(product:Product){
+    fun onAddToCart(product:Product,quantity:Int=1){
+        viewModelScope.launch {
+            try{
+                cartRepository.addToCart(product,quantity)
+            } catch(e:Exception) {
 
+            }
+        }
     }
 }
 sealed class UiState{

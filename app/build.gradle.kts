@@ -92,4 +92,10 @@ dependencies {
     //Coil- Async Network Image
     implementation("io.coil-kt.coil3:coil-compose:3.0.4")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.4")
+
+    //Room Local Database
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 }
