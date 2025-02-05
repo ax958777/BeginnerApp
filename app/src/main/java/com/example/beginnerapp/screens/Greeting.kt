@@ -34,10 +34,17 @@ import kotlinx.serialization.Serializable
                 )
             }
             Button(onClick = {
-                navController.navigate(Routes.Products.routes)
+                navController.navigate(Routes.ProductLists.routes)
             }){
                 Text(
                     text = "Products"
+                )
+            }
+            Button(onClick = {
+                navController.navigate(Routes.ShoppingCart.routes)
+            }){
+                Text(
+                    text = "ShoppingCart"
                 )
             }
         }

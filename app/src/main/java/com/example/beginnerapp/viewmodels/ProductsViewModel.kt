@@ -47,6 +47,7 @@ class ProductsViewModel @Inject constructor(
     }
 
     fun onAddToCart(product:Product,quantity:Int=1){
+
         viewModelScope.launch {
             try{
                 cartRepository.addToCart(product,quantity)

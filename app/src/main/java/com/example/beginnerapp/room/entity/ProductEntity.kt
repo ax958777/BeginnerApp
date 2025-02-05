@@ -17,7 +17,7 @@ data class ProductEntity(
 )
 
 //Extension function for mapping between room database to domain
-fun ProductEntity.toDoamin()= Product(
+fun ProductEntity.toDomain()= Product(
 
   id=id,
  

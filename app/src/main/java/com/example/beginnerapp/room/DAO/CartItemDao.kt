@@ -29,6 +29,6 @@ interface CartItemDao {
 
     @Transaction
     @Query("SELECT * FROM cart_items")
-    fun getCartItemsWithProducts(): List<CartItemWithProduct>
+    suspend fun getCartItemsWithProducts(): List<CartItemWithProduct>
 
 }

@@ -9,5 +9,7 @@ sealed class Routes(val routes:String){
     @Serializable
     object Login : Routes("login")
     @Serializable
-    object Products : Routes("products")
+    object ProductLists : Routes("product_lists")
+    @Serializable
+    object ShoppingCart : Routes("shopping_cart")
 }

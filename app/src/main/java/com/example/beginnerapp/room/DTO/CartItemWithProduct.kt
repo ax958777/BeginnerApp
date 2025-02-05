@@ -5,7 +5,7 @@ import androidx.room.Relation
 import com.example.beginnerapp.model.CartItem
 import com.example.beginnerapp.room.entity.CartItemEntity
 import com.example.beginnerapp.room.entity.ProductEntity
-import com.example.beginnerapp.room.entity.toDoamin
+import com.example.beginnerapp.room.entity.toDomain
 
 data class CartItemWithProduct (
     @Embedded val cartItem: CartItemEntity,
@@ -18,6 +18,6 @@ data class CartItemWithProduct (
 
 // extension mapping from dto to domain
 fun CartItemWithProduct.toDomain():CartItem=CartItem(
-    product = product.toDoamin(),
+    product = product.toDomain(),
     quantity = cartItem.quantity
 )

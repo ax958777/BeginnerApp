@@ -98,4 +98,7 @@ dependencies {
 
     implementation("androidx.room:room-ktx:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
+
+    //Extract Icons
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
 }

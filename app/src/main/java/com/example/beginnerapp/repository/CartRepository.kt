@@ -1,10 +1,13 @@
 package com.example.beginnerapp.repository
 
+import com.example.beginnerapp.model.CartItem
 import com.example.beginnerapp.model.Product
 import com.example.beginnerapp.model.toEntity
 import com.example.beginnerapp.room.DAO.CartItemDao
 import com.example.beginnerapp.room.DAO.ProductDao
+import com.example.beginnerapp.room.DTO.toDomain
 import com.example.beginnerapp.room.entity.CartItemEntity
+import com.example.beginnerapp.room.entity.toDomain
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -33,5 +36,23 @@ class CartRepository @Inject constructor(
             )
         }
 
+    }
+
+    suspend fun getCartItems(): List<CartItem> {
+        return cartItemDao.getCartItemsWithProducts().map { it.toDomain() }
+    }
+
+    suspend fun updateQuantity(productId:Long, quantity: Int){
+        if(quantity<=0){
+            removeFromCart(productId)
+        }else{
+            cartItemDao.updateQuantity(productId,quantity)
+        }
+    }
+    suspend fun removeFromCart(productId:Long){
+            cartItemDao.deleteCartItem(productId)
+    }
+    suspend fun clearCart() {
+        cartItemDao.clearCart()
     }
 }
