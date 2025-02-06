@@ -3,6 +3,7 @@ package com.example.beginnerapp.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -41,15 +42,21 @@ fun ProductListsScreen(
         topBar={
             TopAppBar(
                 title = {Text("Products")},
+
                 actions = {
-                    IconButton( onClick = onCartClick) {
+                    IconButton(
+                        onClick = onCartClick,
+                    ) {
                         BadgedBox(
                             badge = {
                                 if(uiStateCart.items.isNotEmpty()){
-                                    Badge{Text(uiStateCart.items.size.toString())}
+                                    Badge(
+                                        modifier = Modifier.offset(x = -10.dp, y = (-2).dp)
+                                    ) {
+                                        Text(uiStateCart.items.size.toString())
+                                    }
                                 }
                             },
-                            modifier = Modifier.padding(vertical = 4.dp)
                         ) {
                             Icon(Icons.Default.ShoppingCart,"Cart")
                         }
