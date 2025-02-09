@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.beginnerapp.screens.CheckoutScreen
 import com.example.beginnerapp.screens.Greeting
 import com.example.beginnerapp.screens.Login
 import com.example.beginnerapp.screens.ProductListsScreen
@@ -31,7 +32,17 @@ fun NavGraph(navController:NavHostController){
                     navController.popBackStack()
                 },
                 onCheckout = {
-                    //nav to checkout screen
+                    navController.navigate(Routes.Checkout.routes)
+                }
+            )
+        }
+        composable(Routes.Checkout.routes){
+            CheckoutScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onCheckoutComplete={
+
                 }
             )
         }

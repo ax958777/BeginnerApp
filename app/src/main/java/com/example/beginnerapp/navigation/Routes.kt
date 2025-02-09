@@ -12,4 +12,6 @@ sealed class Routes(val routes:String){
     object ProductLists : Routes("product_lists")
     @Serializable
     object ShoppingCart : Routes("shopping_cart")
+    @Serializable
+    object Checkout : Routes("checkout")
 }

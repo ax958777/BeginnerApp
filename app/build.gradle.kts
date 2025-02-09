@@ -101,4 +101,7 @@ dependencies {
 
     //Extract Icons
     implementation("androidx.compose.material:material-icons-extended:1.5.4")
+
+    //Stripe
+    implementation("com.stripe:stripe-android:21.4.1")
 }
