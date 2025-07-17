@@ -1,9 +1,6 @@
 ## Andoid Kotlin JetPack Compose Beginner App
 A simple Android application built with Kotlin and Jetpack Compose. This project serves as a starting point for beginners looking to learn modern Android development.
 
-## 📸 Screenshot
-
-*(Add a screenshot of the app here)*
 
 ## ✨ Features
 
